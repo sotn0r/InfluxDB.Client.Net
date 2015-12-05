@@ -295,7 +295,7 @@ namespace AdysTech.InfluxDB.Client.Net
             //    content.AppendFormat ("{0},{1} {2} {3}\n", measurement, tags, value, timestamp);
             ////remove last \n
             //content.Remove (content.Length - 1, 1);
-            var valuesTxt=String.Join (",", values.Select (v => String.Format ("{0}={1}", v.Key, v.Value)));
+            var valuesTxt=String.Join (",", values.Select (v => String.Format ("{0}={1}", v.Key, v.Value.ToString(CultureInfo.InvariantCulture))));
             var content = String.Format ("{0},{1} {2} {3}", measurement, tags, valuesTxt, timestamp);
 
             ByteArrayContent requestContent = new ByteArrayContent (Encoding.UTF8.GetBytes (content.ToString ()));
